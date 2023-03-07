@@ -1,4 +1,7 @@
-flask
+Flask
 numpy
 sklearn
 gunicorn
+pandas
+requests
+pickle4
