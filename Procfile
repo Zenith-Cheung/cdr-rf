@@ -1,1 +1,1 @@
-web: gunicorn -b:21871 app:app
+web:gunicorn app:app
