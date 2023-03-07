@@ -1,6 +1,6 @@
 Flask
 numpy
-skikit-learn
+scikit-learn
 gunicorn
 pandas
 requests
