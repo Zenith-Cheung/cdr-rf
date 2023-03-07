@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fraudulent Call Recognition</title>
+</head>
+
+<body style="background: #000;">
+<div class="login">
+
+	<h1 style="color:violet;">Fraudulent Call Recognition</h1>
+	<form action="{{url_for('predict')}}" method="post">
+		<input type="text" name="phoneNo" placeholder="The phone number" required="required"><br>
+		<input type="text" name="calledNum" placeholder="Your phone number" required="required"><br>
+		
+		<button type="submit" name="predict" class="btn">Predict the fraudulent phone call</button><p>
+	</form>
+	
+	<br>
+	<br>
+	<h4 style="color:violet;"> {{prediction_text}} </h4>
+</div>		
+</body>
+</html>
+
+<!--<input type="text" name="start3" placeholder="start3" required="required"><br>
+		<input type="text" name="+852" placeholder="+852" required="required"><br>
+		<input type="text" name="repeat" placeholder="repeat" required="required"><br>
+		<input type="text" name="more8" placeholder="more8" required="required"><br>
+		<input type="text" name="repeat4" placeholder="1" required="required"><br> -->
