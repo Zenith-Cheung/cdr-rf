@@ -8,8 +8,9 @@ Created on Tue Mar  7 20:42:59 2023
 from flask import Flask,request,jsonify,render_template
 import numpy as np
 import pickle
-model = pickle.load(open('models/CDRmodel_RF.pkl','rb'))
 app = Flask(__name__)
+model = pickle.load(open('models/CDRmodel_RF.pkl','rb'))
+
 
 @app.route('/')
 def index():
