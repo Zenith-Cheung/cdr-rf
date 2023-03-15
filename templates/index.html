@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
 <title>Fraudulent Call Recognition</title>
 </head>
 
-<body style="background: #000;">
+<body style="background: #000; font-family: sans-serif; text-align: center;">
 <div class="login">
 
 	<h1 style="color:violet;">Fraudulent Call Recognition</h1>
@@ -19,7 +20,7 @@
 	
 	<br>
 	<br>
-	<h4 style="color:violet;"> {{prediction_text}} </h4>
+	<h4 style="color:violet; font-family: sans-serif; text-align: center;"> {{prediction_text}} </h4>
 </div>		
 </body>
 </html>
