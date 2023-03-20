@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
+<title>The Fraud Call Result</title>
+</head>
+
+<body style="background: #000; font-family: sans-serif; text-align: center; color:violet;">
+<div class="login">
+<!--<div class="form">-->
+	<img src="{{url_for('static', filename='photos/fraudcall.png')}}" width="100" height="100">
+	<h1 style="color:violet;">Fraudulent Call Recognition</h1>
+	<br>
+	<h3 style="color:violet; font-family: sans-serif; text-align: center;"> {{prediction_text}} </h3>
+	
+	<form action="mailto:cheunghonyin@gmail.com">
+      <h4> Wrong Predicted? Send Us Email! <button>send mail</button></h4>
+	</form>
+	
+	<p>
+	
+	<form action="{{url_for('index')}}">
+	<button>return</button>
+	</form>
+
+<!--</div>-->
+</div>		
+</body>
+</html>
