@@ -9,6 +9,10 @@ def index():
     return render_template('index.html')
 #render_template('index.html')
 
+@app.route('/thanks')
+def thanks():
+    return render_template('thanks.html')
+
 @app.route('/predict',methods=['POST'])
 def predict():
     #phoneNo = request.form.get('callingNum')
@@ -43,13 +47,14 @@ def predict():
     prediction = model.predict(features)
     
     output = prediction[0]
+    numOut = int_features[0]
     
     if output == "Yes":
         output = "a normal Call."
     else:
         output = "a fraudulent Call."
     
-    return render_template('result.html', prediction_text='The call is {}'.format(output))
+    return render_template('result.html', prediction_text='The call is {}'.format(output), number=numOut)
 
 #jsonify({'The call is':output})
 
