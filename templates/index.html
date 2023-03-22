@@ -3,56 +3,160 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="{{ url_for('static',filename='styles/main.css') }}">
+
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+body {
+  /*align-items: center;*/
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  font-family: sans-serif; 
+  text-align: center;
+}
+
+.login {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 20px;
+  width: 700px;
+  margin-top:60px;
+}
+
+h1 {
+  color:violet;
+}
+
+#phoneNo {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 10px 20px 0;
+  width: 50%;
+}
+
+#calledNum {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 10px 20px 0;
+  width: 50%;
+}
+
+span {
+  color:violet;
+}
+
+#repeat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  margin-left: 700px;
+  margin-top: 365px;
+}
+
+.btn {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 15px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 0px;
+  text-align: center;
+  width: 45%; 
+}
+
+#send {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 15px;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 0px;
+  text-align: center;
+  width: 25%;
+}
+
+</style>
 <title>Fraudulent Call Recognition</title>
 </head>
 
-<body style="background: #000; font-family: sans-serif; text-align: center;">
+<body >
+<ul>
+  <li><a href="{{url_for('index')}}">Home</a></li>
+  <li><a href="https://www.police.gov.hk/ppp_tc/index.html">HK Police Force</a></li> 
+  <li><a href="https://www.adcc.gov.hk/en-hk/home.html">HK Police ADCC</a></li>
+  <li><a href="https://cyberdefender.hk/scameter/">HK Cyber Defender</a></li>
+  <li><a href="{{url_for('thanks')}}">Thank You Info</a></li>
+</ul>
+
 <div class="login">
-<!--<div class="form">-->
+
 	<img src="{{url_for('static', filename='photos/fraudcall.png')}}" width="100" height="100">
-	<h1 style="color:violet;">Fraudulent Call Recognition</h1>
+	<h1>Fraudulent Call Recognition</h1>
 	<form action="{{url_for('predict')}}" method="post">
-		<input type="text" name="phoneNo" placeholder="The phone number" required="required" 	
-					  style=" background-color: #303245;
-  					  border-radius: 12px;
-  					  border: 0;
-  					  box-sizing: border-box;
-  					  color: #eee;
-                           	  font-size: 18px;
-  					  height: 100%;
-  					  outline: 0;
-  					  padding: 10px 20px 0;
-  					  width: 50%;"><p>
-		<input type="text" name="calledNum" placeholder="Your phone number" required="required"
-					  style=" background-color: #303245;
-  					  border-radius: 12px;
-  					  border: 0;
-  					  box-sizing: border-box;
-  					  color: #eee;
-                           	  font-size: 18px;
-  					  height: 100%;
-  					  outline: 0;
-  					  padding: 10px 20px 0;
-  					  width: 50%;"><br>
-		<span style="color:violet;">Is it repeating?</span><input type="radio" name="repeat"><br>
-		
+		<input type="text" name="phoneNo" placeholder="The phone number" id="phoneNo" required="required"><p>
+		<input type="text" name="calledNum" placeholder="Your phone number" id="calledNum" required="required"><br><br>
+		<span>Is it repeating?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="radio" id="repeat" name="repeat"><br>
 		<button type="submit" name="predict" class="btn">Predict the fraudulent phone call</button><p>
 	</form>
-	
-		<form action="mailto:cheunghonyin@gmail.com">
-            <button>send mail</button>
+		<form action="mailto:cheunghonyin@gmail.com?subject=Call Reporting&body=I want to report XXXXXXXX(please input the number) is a fraudulent call." method="post">
+            <button id="send">Report A Call</button>
 		</form>
 	<br>
 	<br>
-	<!--<h4 style="color:violet; font-family: sans-serif; text-align: center;"> {{prediction_text}} </h4>-->
-<!--</div>-->
+
 </div>		
 </body>
 </html>
-
-<!--<input type="text" name="start3" placeholder="start3" required="required"><br>
-		<input type="text" name="+852" placeholder="+852" required="required"><br>
-		<input type="text" name="repeat" placeholder="repeat" required="required"><br>
-		<input type="text" name="more8" placeholder="more8" required="required"><br>
-		<input type="text" name="repeat4" placeholder="1" required="required"><br> -->
