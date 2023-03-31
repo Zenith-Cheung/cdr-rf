@@ -159,8 +159,10 @@ span {
 	<h1>Fraudulent Call Recognition</h1>
 	<form action="{{url_for('predict')}}" method="post">
 		<input type="text" name="phoneNo" placeholder="The phone number" id="phoneNo" required="required"><p>
-		<input type="text" name="calledNum" placeholder="Your phone number" id="calledNum" required="required"><br><br>
-		<span>Is it repeating?</span><input type="radio" id="repeat" name="repeat"><br>
+		<!--<input type="text" name="calledNum" placeholder="Your phone number" id="calledNum" required="required"><br><br>-->
+		<span>Have you answered this call?</span><input type="radio" id="repeat" name="answer" value="0"><br>
+		<span>Is it repeating in a short period?</span><input type="radio" id="repeat" name="repeat"><br>
+		<input type="hidden" name="dum" value="dum">
 		<button type="submit" name="predict" class="btn">Predict the fraudulent phone call</button><p>
 	</form>
 		<form action="mailto:cheunghonyin@gmail.com?subject=Call Reporting&body=I want to report XXXXXXXX(please input the number) is a fraudulent call." method="post">
